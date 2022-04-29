@@ -53,7 +53,6 @@ class Kitchen{
     }
 
     cookFastestOrder(){
-        console.log(this.orderedDishes);
         if (this.orderedDishes.length==0){
             throw new Error("No dishes to cook.");
         }
@@ -143,11 +142,6 @@ async function test() {
     kitchen.order(new Steak()); // Steak extends Dish (cookingTime = 7)
 
     // Feel free to experiment with various dishes and ingridients
-
-    await kitchen.cookFastestOrder(); // Returns fastest dish to make
-        await kitchen.cookFastestOrder(); // Returns fastest dish to make
-
-    await kitchen.cookFastestOrder(); // Returns fastest dish to make
 
     await kitchen.cookFastestOrder(); // Returns fastest dish to make
 
