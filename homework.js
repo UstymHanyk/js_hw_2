@@ -53,7 +53,11 @@ class Kitchen{
     }
 
     cookFastestOrder(){
-        if (!this.orderedDishes) console.log("No dishes to cook.")
+        console.log(this.orderedDishes);
+        if (this.orderedDishes.length==0){
+            throw new Error("No dishes to cook.");
+        }
+
         let fastestDish = this.orderedDishes[0];
         for(const dish of this.orderedDishes){
             if (dish.cookingTime<fastestDish.cookingTime){
@@ -67,7 +71,9 @@ class Kitchen{
         this.orderedDishes = this.orderedDishes.filter(dish => dish !== fastestDish);
     }
     cookAllOrders(){
-        if (!this.orderedDishes) console.log("No dishes to cook.")
+        if (this.orderedDishes.length==0){
+            throw new Error("No dishes to cook.");
+        }
         for(let dish of this.orderedDishes){
             dish.cook();
         }
@@ -137,6 +143,13 @@ async function test() {
     kitchen.order(new Steak()); // Steak extends Dish (cookingTime = 7)
 
     // Feel free to experiment with various dishes and ingridients
+
+    await kitchen.cookFastestOrder(); // Returns fastest dish to make
+        await kitchen.cookFastestOrder(); // Returns fastest dish to make
+
+    await kitchen.cookFastestOrder(); // Returns fastest dish to make
+
+    await kitchen.cookFastestOrder(); // Returns fastest dish to make
 
     await kitchen.cookAllOrders(); // Returns two dishes in array
 
